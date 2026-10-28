@@ -1,0 +1,558 @@
+.couture-enquiry {
+  width: min(940px, calc(100% - 48px));
+  margin: 0 auto 72px;
+  overflow: hidden;
+  border: 1px solid rgba(112, 29, 43, 0.18);
+  background: #fffdf9;
+  box-shadow: 0 18px 55px rgb(38 29 17 / 8%);
+  animation: coutureCardEnter 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.couture-enquiry-header {
+  padding: clamp(24px, 5vw, 42px);
+  background:
+    radial-gradient(ellipse at 92% 5%, rgb(212 175 98 / 13%), transparent 36%),
+    #0b0908;
+  color: #f8f3ea;
+  animation: coutureHeaderEnter 700ms 80ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.couture-enquiry-header h2 {
+  animation: coutureTitleEnter 450ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.couture-enquiry--review .couture-enquiry-header h2 {
+  animation-name: coutureReviewTitleEnter;
+}
+
+.couture-enquiry-header h2 {
+  margin: 0 0 12px;
+  color: #f8f3ea;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.couture-enquiry-header > p:not(.eyebrow) {
+  max-width: 650px;
+  color: rgba(248, 243, 234, 0.78);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.couture-enquiry-header > small {
+  color: #d4af62;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+}
+
+.couture-progress {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 11px;
+}
+
+.couture-progress span {
+  height: 3px;
+  flex: 1;
+  background: #554b3c;
+}
+
+.couture-progress .is-active {
+  background: #d4af62;
+}
+
+.couture-form {
+  padding: clamp(20px, 4vw, 38px);
+}
+
+.couture-form-section {
+  animation: coutureSectionEnter 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.couture-form-section:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.couture-form-section:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.couture-form-section + .couture-form-section {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid #e9e0d3;
+}
+
+.couture-form-section h3,
+.couture-terms-panel h4,
+.couture-calendar-heading h3,
+.couture-review h2 {
+  margin: 0 0 10px;
+  color: #0b0908;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+}
+
+.couture-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.couture-field > label,
+.couture-consent {
+  color: #332d28;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.couture-field input,
+.couture-field select,
+.couture-field textarea,
+.couture-date-trigger {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 13px;
+  border: 1px solid #c9bfb1;
+  border-radius: 0;
+  background: #fffdf9;
+  color: #0b0908;
+  font: inherit;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.couture-field textarea {
+  resize: vertical;
+}
+
+.couture-field input:focus-visible,
+.couture-field select:focus-visible,
+.couture-field textarea:focus-visible,
+.couture-date-trigger:focus-visible,
+.couture-calendar button:focus-visible,
+.couture-terms-toggle:focus-visible,
+.couture-consent input:focus-visible,
+.couture-submit:focus-visible,
+.couture-secondary:focus-visible {
+  outline: 3px solid #d4af62;
+  outline-offset: 2px;
+  border-color: #b38632;
+}
+
+.couture-field [aria-invalid='true'],
+.couture-consent input[aria-invalid='true'] {
+  border-color: #a32632;
+}
+
+.couture-field-hint,
+.couture-demo-notice {
+  margin: 4px 0 0;
+  color: #685f55;
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.couture-error {
+  color: #8d1b27;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  animation: coutureFeedbackEnter 220ms ease both;
+}
+
+.couture-reveal-field {
+  padding: 14px;
+  border-left: 3px solid #d4af62;
+  background: #f8f3ea;
+  animation: coutureReveal 220ms ease both;
+}
+
+@keyframes coutureReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.couture-date-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.couture-date-trigger {
+  text-align: left;
+  cursor: pointer;
+}
+
+.couture-clear-date {
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid rgba(112, 29, 43, 0.32);
+  background: transparent;
+  color: #701d2b;
+  cursor: pointer;
+}
+
+.couture-calendar {
+  max-width: 380px;
+  padding: 17px;
+  border: 1px solid rgba(212, 175, 98, 0.55);
+  background: #fffdf9;
+  box-shadow: 0 12px 32px rgb(23 16 12 / 11%);
+  animation: coutureReveal 180ms ease both;
+}
+
+.couture-calendar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.couture-calendar-heading h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  text-align: center;
+}
+
+.couture-calendar-heading button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(112, 29, 43, 0.22);
+  background: #f8f3ea;
+  color: #701d2b;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.couture-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.couture-weekday {
+  padding: 5px 0;
+  color: #685f55;
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.couture-calendar-blank,
+.couture-calendar-day {
+  min-width: 0;
+  aspect-ratio: 1;
+}
+
+.couture-calendar-day {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #0b0908;
+  cursor: pointer;
+  font: inherit;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.couture-calendar-day:hover:not(:disabled) {
+  border-color: #d4af62;
+  background: #f8f3ea;
+}
+
+.couture-calendar-day.is-today {
+  border-color: #701d2b;
+  color: #701d2b;
+  font-weight: 700;
+}
+
+.couture-calendar-day.is-selected,
+.couture-calendar-day.is-selected:hover {
+  background: #701d2b;
+  color: #fffdf9;
+}
+
+.couture-calendar-day:disabled {
+  color: #aaa195;
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.couture-calendar > .couture-field-hint {
+  margin-top: 12px;
+}
+
+.couture-terms-panel {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #e5dac7;
+  background: #f8f4ec;
+}
+
+.couture-terms-panel h4 {
+  font-size: 1.3rem;
+}
+
+.couture-terms-panel p,
+.couture-terms-list li {
+  color: #554e47;
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.couture-terms-toggle {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #701d2b;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.couture-terms-list {
+  padding-left: 20px;
+  animation: coutureFeedbackEnter 240ms ease both;
+}
+
+.couture-terms-list li + li {
+  margin-top: 8px;
+}
+
+.couture-policy-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.couture-policy-links a {
+  color: #701d2b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.couture-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 20px 0 10px;
+  font-weight: 500;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.couture-consent input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  margin: 3px 0 0;
+  accent-color: #701d2b;
+}
+
+.couture-submit,
+.couture-secondary {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border: 1px solid #0b0908;
+  background: #0b0908;
+  color: #f8f3ea;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.couture-submit:hover {
+  background: #701d2b;
+  border-color: #701d2b;
+  transform: translateY(-1px);
+}
+
+.couture-review {
+  padding: clamp(20px, 4vw, 38px);
+  animation: coutureSectionEnter 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.couture-review dl {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.7fr) 1.3fr;
+  gap: 11px 18px;
+  margin: 22px 0;
+}
+
+.couture-review dt {
+  color: #685f55;
+  font-size: 0.8rem;
+}
+
+.couture-review dd {
+  margin: 0;
+  color: #0b0908;
+  font-size: 0.84rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.couture-review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.couture-secondary {
+  border-color: #b38632;
+  background: transparent;
+  color: #493919;
+}
+
+@keyframes coutureCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes coutureHeaderEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes coutureTitleEnter {
+  from {
+    opacity: 0.5;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes coutureReviewTitleEnter {
+  from {
+    opacity: 0.6;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes coutureSectionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes coutureFeedbackEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .couture-enquiry {
+    width: calc(100% - 28px);
+    margin-bottom: 52px;
+  }
+
+  .couture-calendar {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .couture-review dl {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .couture-review dd {
+    margin-bottom: 10px;
+  }
+
+  .couture-review-actions {
+    flex-direction: column;
+  }
+
+  .couture-submit,
+  .couture-secondary {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .couture-enquiry,
+  .couture-enquiry-header,
+  .couture-enquiry-header h2,
+  .couture-form-section,
+  .couture-review,
+  .couture-error,
+  .couture-terms-list {
+    animation: none;
+  }
+
+  .couture-reveal-field,
+  .couture-calendar {
+    animation: none;
+  }
+
+  .couture-field input,
+  .couture-field select,
+  .couture-field textarea,
+  .couture-calendar-day,
+  .couture-submit,
+  .couture-secondary {
+    transition: none;
+  }
+}
+
+html[data-reduce-motion] .couture-enquiry,
+html[data-reduce-motion] .couture-enquiry-header,
+html[data-reduce-motion] .couture-enquiry-header h2,
+html[data-reduce-motion] .couture-form-section,
+html[data-reduce-motion] .couture-review,
+html[data-reduce-motion] .couture-error,
+html[data-reduce-motion] .couture-terms-list {
+  animation: none;
+}
