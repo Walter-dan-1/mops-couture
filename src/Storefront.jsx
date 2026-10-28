@@ -15,6 +15,7 @@ const routes = {
   '/custom-couture': 'Custom Couture',
   '/gallery': 'Gallery',
   '/community': 'Community',
+  '/community/create': 'Share Your Outfit',
   '/our-story': 'Our Story',
   '/contact': 'Contact',
   '/bag': 'Shopping Bag',
@@ -797,6 +798,14 @@ function App() {
     }
   }
 
+  function navigateTo(path) {
+    if (!routes[path]) return
+    window.history.pushState({}, '', path)
+    setPathname(path)
+    setMenuOpen(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   function updatePreference(name, value) {
     const updated = { ...preferences, [name]: value }
     setPreferences(updated)
@@ -830,7 +839,8 @@ function App() {
   const isHome = pathname === '/'
   const isReadyToWear = pathname === '/ready-to-wear'
   const isGallery = pathname === '/gallery'
-  const isCommunity = pathname === '/community'
+  const isCommunity = pathname === '/community' || pathname === '/community/create'
+  const isCommunityCreate = pathname === '/community/create'
   const isCustom = pathname === '/custom-couture'
   const isStory = pathname === '/our-story'
   const isContact = pathname === '/contact'
@@ -1118,7 +1128,7 @@ function App() {
           </section>
         </div>}
 
-        {isCommunity && <CommunityFeed />}
+        {isCommunity && <CommunityFeed isCreatePage={isCommunityCreate} onNavigate={navigateTo} />}
 
         {galleryPhoto && <div
           className="gallery-lightbox"
