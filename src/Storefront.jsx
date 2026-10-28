@@ -424,6 +424,16 @@ function BackgroundMusicPlayer() {
     const audio = audioRef.current
     if (!audio || tracks.length === 0) return undefined
 
+    audio.volume = 0.25
+    audio.play().then(
+      () => {
+        playbackRequested.current = true
+      },
+      () => {
+        playbackRequested.current = false
+      },
+    )
+
     const startAfterGesture = () => {
       if (playbackRequested.current || !audio.paused) return
       userActivated.current = true
@@ -451,7 +461,7 @@ function BackgroundMusicPlayer() {
 
   useEffect(() => {
     const audio = audioRef.current
-    if (!audio || !playbackRequested.current || tracks.length === 0) return
+    if (!audio || (!playbackRequested.current && !userActivated.current) || tracks.length === 0) return
     audio.load()
     audio.play().catch(() => {
       playbackRequested.current = false
@@ -495,7 +505,12 @@ function BackgroundMusicPlayer() {
 
   function skipUnavailableTrack() {
     failedTracks.current.add(trackIndex)
-    playbackRequested.current = userActivated.current
+    playbackRequested.current = playbackRequested.current || userActivated.current
+    advancePlaylist()
+  }
+
+  function continuePlaylist() {
+    playbackRequested.current = true
     advancePlaylist()
   }
 
@@ -503,10 +518,10 @@ function BackgroundMusicPlayer() {
     <audio
       ref={audioRef}
       src={tracks[trackIndex].src}
-      preload="none"
+      preload="auto"
       hidden
       aria-hidden="true"
-      onEnded={advancePlaylist}
+      onEnded={continuePlaylist}
       onError={skipUnavailableTrack}
     />
   )
@@ -798,9 +813,10 @@ function App() {
     }
   }
 
-  function navigateTo(path) {
+  function navigateTo(path, replace = false) {
     if (!routes[path]) return
-    window.history.pushState({}, '', path)
+    if (replace) window.history.replaceState({}, '', path)
+    else window.history.pushState({}, '', path)
     setPathname(path)
     setMenuOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })

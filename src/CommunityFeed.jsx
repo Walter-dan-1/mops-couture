@@ -584,7 +584,7 @@ export default function CommunityFeed({ isCreatePage = false, onNavigate }) {
       setSaveProgress('')
       setPickerOpen(false)
       clearPhotos()
-      onNavigate('/community')
+      onNavigate('/community', true)
     } catch (error) {
       let cleanupMessage = ''
       try {
@@ -609,7 +609,7 @@ export default function CommunityFeed({ isCreatePage = false, onNavigate }) {
     <div className={`community-page${isCreatePage ? ' community-create-page' : ''}`}>
       {isCreatePage ? (
         <header className="community-create-intro">
-          <button className="community-back-link" type="button" onClick={() => onNavigate('/community')}>
+          <button className="community-back-link" type="button" onClick={() => onNavigate('/community', true)}>
             <span aria-hidden="true">←</span> Back to Community
           </button>
           <p className="eyebrow accent">Your style, your story</p>
@@ -659,8 +659,8 @@ export default function CommunityFeed({ isCreatePage = false, onNavigate }) {
         <form className="community-composer" onSubmit={publishPost}>
           <div className="community-composer-heading">
             <div>
-              <p className="eyebrow accent">Your style, your story</p>
-              <h2>Share your outfit</h2>
+              <p className="eyebrow accent">Community demo</p>
+              <h2>Post details</h2>
             </div>
             <span>Demo post</span>
           </div>
@@ -727,7 +727,7 @@ export default function CommunityFeed({ isCreatePage = false, onNavigate }) {
           {formError && !pickerOpen && <p className="community-error" role="alert">{formError}</p>}
           <div className="community-composer-actions">
             <button className="community-publish-button" type="submit" disabled={posting || processingPhotos}>{posting ? 'Saving photos…' : '6. Publish demo post'}</button>
-            <button className="community-cancel-button" type="button" onClick={() => onNavigate('/community')}>Cancel</button>
+            <button className="community-cancel-button" type="button" onClick={() => onNavigate('/community', true)}>Cancel</button>
           </div>
         </form>
       )}
